@@ -18,12 +18,14 @@ int _printf(const char *format, ...)
 	va_start(list, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if ((format[i]) == '%')
+		if ((format[i]) == '%' )
 		{
 			if (format[i + 1] == 'c')
 			{
 				_putchar(va_arg(list, int));
-				count++;
+					count++;
+				i++;
+				continue;
 			}
 			else if (format[i + 1] == 'r')
 			{
@@ -38,6 +40,8 @@ int _printf(const char *format, ...)
 					_putchar(substring[j]);
 					count++;
 				}
+				i++;
+				continue;
 			}
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
@@ -51,6 +55,8 @@ int _printf(const char *format, ...)
 				_putchar((digit / 10));
 				_putchar((digit % 10));
 				count++;
+				i++;
+				continue;
 			}
 		}
 		_putchar(format[i]);
